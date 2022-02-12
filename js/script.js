@@ -101,8 +101,13 @@ function criaBomba() {
 
         contagemBombas--    
 
-        if (contagemBombas % 5 === 0) {
-            velocidadeBomba += 2
+        if (contagemBombas % 10 === 0) {
+            velocidadeBomba++
+            tempoCriaBomba -= 200
+            
+            clearInterval(tempoCriaBomba)
+            
+            tempoCriaBomba = setInterval(criaBomba, frequenciaBomba)
         }
     }
 }
@@ -309,6 +314,8 @@ function reinicia() {
     contagemBombas = 100
     posicaoJogadorX = tamanhoTelaLargura / 2
     posicaoJogadorY = tamanhoTelaAltura / 2
+    velocidadeBomba = 4
+    frequenciaBomba = 1700
 
     jogador.style.top = posicaoJogadorX + "px"
     jogador.style.left = posicaoJogadorY + "px"    
