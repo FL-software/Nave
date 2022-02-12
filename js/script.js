@@ -2,7 +2,7 @@ let jogador, velocidadeJogador, velocidadeTiro, ajusteTiro
 let direcaoJogadorY, direcaoJogadorX, posicaoJogadorX, posicaoJogadorY
 let tamanhoTelaLargura, tamanhoTelaAltura, topoTela, telaMensagem
 let jogoAtivo, frames, vidaPlaneta, barraPlaneta
-let contagemBombas, contadorBombas, bombas, velocidadeBomba, frequenciaBomba
+let contagemBombas, contadorBombas, bombas, velocidadeBomba
 let danoBomba, tempoCriaBomba, indiceExplosao, indiceSom
 
 function teclaBaixa() {
@@ -99,16 +99,7 @@ function criaBomba() {
         
         document.body.appendChild(bomba)
 
-        contagemBombas--    
-
-        if (contagemBombas % 10 === 0) {
-            velocidadeBomba++
-            tempoCriaBomba -= 200
-            
-            clearInterval(tempoCriaBomba)
-            
-            tempoCriaBomba = setInterval(criaBomba, frequenciaBomba)
-        }
+        contagemBombas--
     }
 }
 
@@ -314,8 +305,6 @@ function reinicia() {
     contagemBombas = 100
     posicaoJogadorX = tamanhoTelaLargura / 2
     posicaoJogadorY = tamanhoTelaAltura / 2
-    velocidadeBomba = 4
-    frequenciaBomba = 1700
 
     jogador.style.top = posicaoJogadorX + "px"
     jogador.style.left = posicaoJogadorY + "px"    
@@ -325,7 +314,7 @@ function reinicia() {
 
     jogoAtivo = true
 
-    tempoCriaBomba = setInterval(criaBomba, frequenciaBomba)
+    tempoCriaBomba = setInterval(criaBomba, 1700)
 
     jogoRepeticao()
 }
@@ -354,7 +343,6 @@ function inicia() {
     //Controles das bombas
     contagemBombas = 100
     velocidadeBomba = 3
-    frequenciaBomba = 1700
     danoBomba = 10
     contadorBombas = document.getElementById("contadorBombas")
 
